@@ -1,0 +1,69 @@
+<section class="countdown-section">
+  <div class="countdown-inner">
+    <div class="section-header" reveal>
+      <span class="section-eyebrow">The Big Day</span>
+      <h2 class="section-title">Counting Down Together</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- Heartbeat heart icon -->
+    <div class="heartbeat-icon" reveal="150ms">❤</div>
+
+    <div class="countdown-grid" reveal="300ms">
+
+      <div class="countdown-cell">
+        <div class="cell-ring-wrap">
+          <div class="ring-pulse"></div>
+          <div class="ring-pulse ring-pulse-2"></div>
+          <div class="cell-ring">
+            <span class="cell-number">{{ countdownService.timeLeft().days }}</span>
+          </div>
+        </div>
+        <span class="cell-label">Days</span>
+      </div>
+
+      <div class="countdown-dot">·</div>
+
+      <div class="countdown-cell">
+        <div class="cell-ring-wrap">
+          <div class="ring-pulse"></div>
+          <div class="ring-pulse ring-pulse-2"></div>
+          <div class="cell-ring">
+            <span class="cell-number">{{ countdownService.timeLeft().hours }}</span>
+          </div>
+        </div>
+        <span class="cell-label">Hours</span>
+      </div>
+
+      <div class="countdown-dot">·</div>
+
+      <div class="countdown-cell">
+        <div class="cell-ring-wrap">
+          <div class="ring-pulse"></div>
+          <div class="ring-pulse ring-pulse-2"></div>
+          <div class="cell-ring">
+            <span class="cell-number">{{ countdownService.timeLeft().minutes }}</span>
+          </div>
+        </div>
+        <span class="cell-label">Minutes</span>
+      </div>
+
+      <div class="countdown-dot">·</div>
+
+      <div class="countdown-cell">
+        <div class="cell-ring-wrap">
+          <div class="ring-pulse"></div>
+          <div class="ring-pulse ring-pulse-2"></div>
+          <div class="cell-ring">
+            <span class="cell-number">{{ countdownService.timeLeft().seconds }}</span>
+          </div>
+        </div>
+        <span class="cell-label">Seconds</span>
+      </div>
+
+    </div>
+
+    <p class="countdown-tagline" reveal="450ms">Counting the days to our forever</p>
+    <p class="countdown-date" reveal="550ms">Friday, 24th July 2026</p>
+  </div>
+</section>

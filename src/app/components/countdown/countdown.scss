@@ -1,0 +1,154 @@
+// Heartbeat (in global styles.scss)
+// Pulse ring for cells
+
+
+
+@keyframes ringExpand {
+  0%   { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.countdown-section {
+  padding: 7rem 1.5rem;
+  background-color: var(--color-cream-mid);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(200,151,58,0.3), transparent);
+  }
+  &::before { top: 0; }
+  &::after  { bottom: 0; }
+}
+
+.countdown-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.heartbeat-icon {
+  font-size: 2.2rem;
+  color: #e87878;
+  margin: 0 auto 2.5rem;
+  display: block;
+  animation: vibrantHeartbeat 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(232, 120, 120, 0.6));
+  cursor: default;
+  user-select: none;
+}
+
+.countdown-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 0 0 2.5rem;
+}
+
+.countdown-dot {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: rgba(44, 36, 32, 0.25);
+  padding-bottom: 1.8rem;
+
+  @media (max-width: 480px) { display: none; }
+}
+
+.countdown-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+// Pulse ring wrapper
+.cell-ring-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-pulse {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 1px solid rgba(44,36,32,0.15);
+  animation: ringExpand 2s ease-out infinite;
+  pointer-events: none;
+
+  @media (min-width: 768px) {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+.ring-pulse-2 {
+  animation-delay: 0.6s;
+}
+
+.cell-ring {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 1px solid rgba(44, 36, 32, 0.12);
+  background: var(--color-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+  animation: heartbeat 1.2s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+
+  @media (min-width: 768px) {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+.cell-number {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--color-text);
+  font-weight: 400;
+  line-height: 1;
+  min-width: 2ch;
+  text-align: center;
+
+  @media (min-width: 768px) { font-size: 2.6rem; }
+}
+
+.cell-label {
+  font-family: var(--font-caps);
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.countdown-tagline {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+.countdown-date {
+  font-family: var(--font-caps);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}

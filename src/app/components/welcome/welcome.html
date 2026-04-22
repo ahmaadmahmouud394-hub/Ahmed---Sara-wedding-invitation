@@ -1,0 +1,58 @@
+@if (!isHidden) {
+  <div class="welcome-overlay" [class.opened]="isOpened">
+
+    <!-- Ambient floating particles -->
+    <div class="particles">
+      @for (p of particles; track p) {
+        <div class="particle" [style]="p"></div>
+      }
+    </div>
+
+    <div class="welcome-content">
+
+      <p class="welcome-eyebrow">YOU HAVE RECEIVED A</p>
+      <h1 class="welcome-heading">Wedding Invitation</h1>
+
+      <div class="seal-wrapper" (click)="openInvitation()">
+        <div class="seal-glow"></div>
+        <div class="seal-base">
+          <!-- Outer ring -->
+          <div class="ring ring-outer"></div>
+          <!-- Inner dashed ring -->
+          <div class="ring ring-inner"></div>
+
+          <!-- Gold compass petals -->
+          <div class="petal petal-n"></div>
+          <div class="petal petal-s"></div>
+          <div class="petal petal-w"></div>
+          <div class="petal petal-e"></div>
+
+          <!-- Diamond accents -->
+          <div class="diamond diamond-ne"></div>
+          <div class="diamond diamond-nw"></div>
+          <div class="diamond diamond-se"></div>
+          <div class="diamond diamond-sw"></div>
+
+          <!-- Couple initials -->
+          <div class="seal-monogram">
+            <span class="monogram-initial">A</span>
+            <span class="monogram-amp">&amp;</span>
+            <span class="monogram-initial">S</span>
+          </div>
+        </div>
+
+        <!-- Wax drips -->
+        <div class="wax-drip drip-l"></div>
+        <div class="wax-drip drip-c"></div>
+        <div class="wax-drip drip-r"></div>
+      </div>
+
+      <div class="tap-prompt" (click)="openInvitation()">
+        <span class="tap-line"></span>
+        <span class="tap-text">tap to open</span>
+        <span class="tap-line"></span>
+      </div>
+
+    </div>
+  </div>
+}

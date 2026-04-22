@@ -1,0 +1,299 @@
+// ---- Keyframes ----
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -40px) scale(1.05); }
+  66%       { transform: translate(-20px, 20px) scale(0.97); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: none; }
+}
+
+
+@keyframes petalFloat {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-120vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes shimmerText {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes lineDraw {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes pulseRing {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+// ---- Hero Section ----
+.hero-section {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--color-cream);
+  padding-top: 80px;
+}
+
+// ---- Background layers ----
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,151,58,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(200,151,58,0.05) 0%, transparent 70%),
+    var(--color-cream);
+}
+
+.hero-bg-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(200,151,58,0.13) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.6;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: orbFloat ease-in-out infinite;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  top: -150px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(200,151,58,0.14), transparent 70%);
+  animation-duration: 14s;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(154,110,42,0.12), transparent 70%);
+  animation-duration: 18s;
+  animation-delay: -6s;
+}
+
+// ---- Floating petals ----
+.hero-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  bottom: -20px;
+  width: 10px;
+  height: 16px;
+  background: linear-gradient(to bottom, #E8C060, rgba(200,151,58,0.4));
+  border-radius: 50% 50% 30% 30%;
+  animation: petalFloat linear infinite;
+}
+
+.petal-a { left: 8%;  animation-duration: 12s; animation-delay: 0s;   width: 8px;  height: 14px; }
+.petal-b { left: 22%; animation-duration: 15s; animation-delay: -4s;  width: 12px; height: 18px; }
+.petal-c { left: 45%; animation-duration: 10s; animation-delay: -8s;  width: 7px;  height: 12px; opacity: 0.7; }
+.petal-d { left: 65%; animation-duration: 14s; animation-delay: -2s;  width: 10px; height: 16px; }
+.petal-e { left: 78%; animation-duration: 18s; animation-delay: -6s;  width: 9px;  height: 15px; opacity: 0.6; }
+.petal-f { left: 90%; animation-duration: 11s; animation-delay: -10s; width: 11px; height: 17px; }
+
+// ---- Corner flourishes ----
+.flourish {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  transition: opacity 0.3s;
+
+  &.flourish-tl { top: 24px; left: 24px; border-top: 1px solid rgba(200,151,58,0.4); border-left: 1px solid rgba(200,151,58,0.4); }
+  &.flourish-tr { top: 24px; right: 24px; border-top: 1px solid rgba(200,151,58,0.4); border-right: 1px solid rgba(200,151,58,0.4); }
+  &.flourish-bl { bottom: 24px; left: 24px; border-bottom: 1px solid rgba(200,151,58,0.4); border-left: 1px solid rgba(200,151,58,0.4); }
+  &.flourish-br { bottom: 24px; right: 24px; border-bottom: 1px solid rgba(200,151,58,0.4); border-right: 1px solid rgba(200,151,58,0.4); }
+}
+
+// ---- Content ----
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  max-width: 700px;
+  width: 100%;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-caps);
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 2.5rem;
+  animation: fadeSlideUp 0.9s ease 0.2s both;
+}
+
+// ---- Names ----
+.hero-names {
+  margin-bottom: 2.5rem;
+  animation: fadeSlideUp 0.9s ease 0.4s both;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 14vw, 8rem);
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  position: relative;
+}
+
+// Gold shimmer sweep on names
+.name-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-text) 0%,
+    var(--color-text) 35%,
+    #E8C060 50%,
+    var(--color-text) 65%,
+    var(--color-text) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerText 4s linear infinite;
+}
+
+.hero-ampersand-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.2rem 0;
+}
+
+.hero-line {
+  flex: 1;
+  max-width: 100px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold-dark), transparent);
+  animation: lineDraw 1.5s ease 1s both;
+}
+
+.hero-ampersand {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.5rem;
+  color: var(--color-gold);
+  animation: vibrantHeartbeat 2s ease-in-out infinite;
+}
+
+// ---- Request ----
+.hero-request {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+// ---- Meta ----
+.hero-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.meta-label {
+  font-family: var(--font-caps);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.meta-value {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.hero-meta-divider {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--color-gold-dark), transparent);
+}
+
+// ---- CTA Button ----
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 2.5rem;
+  border: 1px solid var(--color-gold-dark);
+  color: var(--color-gold-dark);
+  font-family: var(--font-caps);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-gold-dark);
+    transform: translateX(-101%);
+    transition: transform 0.4s ease;
+    z-index: 0;
+  }
+
+  &:hover::before { transform: translateX(0); }
+  &:hover { color: var(--color-cream); }
+
+  .cta-text, .cta-icon { position: relative; z-index: 1; }
+  .cta-icon { width: 16px; height: 16px; }
+}
+
+

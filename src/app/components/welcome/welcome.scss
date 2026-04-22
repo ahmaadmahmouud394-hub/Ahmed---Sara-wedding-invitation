@@ -1,0 +1,262 @@
+// Welcome overlay animations
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes floatParticle {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-30px) scale(1.2); }
+}
+
+@keyframes pulseSeal {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200, 151, 58, 0.25), 0 12px 40px rgba(0,0,0,0.25); }
+  50%       { box-shadow: 0 0 0 20px rgba(200, 151, 58, 0), 0 12px 40px rgba(0,0,0,0.25); }
+}
+
+@keyframes spinRingOuter {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.15); }
+}
+
+@keyframes tapBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+// =====================
+// Overlay
+// =====================
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(ellipse at center top, #F8F3EA 0%, #EDE5D4 60%, #E0D4BC 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease 0.4s;
+  overflow: hidden;
+}
+
+.welcome-overlay.opened {
+  transform: translateY(-100vh);
+  opacity: 0;
+  pointer-events: none;
+}
+
+// =====================
+// Particles
+// =====================
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background: radial-gradient(circle, var(--color-gold) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatParticle linear infinite;
+}
+
+// =====================
+// Content
+// =====================
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem;
+  animation: fadeInDown 1s ease both;
+}
+
+.welcome-eyebrow {
+  font-family: var(--font-caps);
+  font-size: 0.65rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  animation: fadeInDown 1s ease 0.2s both;
+}
+
+.welcome-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-text);
+  letter-spacing: 0.05em;
+  animation: fadeInDown 1s ease 0.35s both;
+}
+
+// =====================
+// Seal
+// =====================
+.seal-wrapper {
+  position: relative;
+  cursor: pointer;
+  animation: fadeInUp 1s ease 0.5s both;
+
+  &:hover .seal-base {
+    transform: scale(1.03);
+  }
+}
+
+.seal-glow {
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(ellipse, rgba(200, 151, 58, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: glowPulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.seal-base {
+  width: 190px;
+  height: 190px;
+  background: radial-gradient(circle at 35% 35%, #2D4A36, #1A2E22 60%, #0F1C14);
+  border-radius: 49% 51% 52% 48% / 50% 48% 52% 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    inset 0 -2px 6px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease;
+  animation: pulseSeal 3s ease-in-out infinite;
+
+  @media (min-width: 768px) {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+// Rings
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ring-outer {
+  inset: 12px;
+  border: 1px solid rgba(200, 151, 58, 0.35);
+  animation: spinRingOuter 30s linear infinite;
+}
+
+.ring-inner {
+  inset: 22px;
+  border: 1px dashed rgba(200, 151, 58, 0.25);
+}
+
+// Compass Petals
+.petal {
+  position: absolute;
+  width: 13px;
+  height: 22px;
+  background: linear-gradient(to bottom, #E8C060, #C8973A);
+  border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+
+  &.petal-n { top: 18px; left: 50%; transform: translateX(-50%); }
+  &.petal-s { bottom: 18px; left: 50%; transform: translateX(-50%) rotate(180deg); }
+  &.petal-w { left: 18px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+  &.petal-e { right: 18px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+}
+
+// Diamonds
+.diamond {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: var(--color-gold);
+  transform: rotate(45deg);
+
+  &.diamond-ne { top: 38px; right: 38px; }
+  &.diamond-nw { top: 38px; left: 38px; }
+  &.diamond-se { bottom: 38px; right: 38px; }
+  &.diamond-sw { bottom: 38px; left: 38px; }
+}
+
+// Monogram
+.seal-monogram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #E8C060;
+  font-family: var(--font-display);
+  line-height: 1.05;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+.monogram-initial {
+  font-size: 1.9rem;
+  font-weight: 500;
+
+  @media (min-width: 768px) { font-size: 2.4rem; }
+}
+
+.monogram-amp {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(232, 192, 96, 0.75);
+  margin: 0.1rem 0;
+}
+
+// Wax drips
+.wax-drip {
+  position: absolute;
+  background: linear-gradient(to bottom, #1A2E22, #0F1C14);
+  border-radius: 0 0 60% 60%;
+  bottom: -7px;
+
+  &.drip-l { width: 14px; height: 13px; left: 32%; }
+  &.drip-c { width: 22px; height: 18px; left: 50%; transform: translateX(-50%); }
+  &.drip-r { width: 16px; height: 11px; right: 32%; }
+}
+
+// =====================
+// Tap prompt
+// =====================
+.tap-prompt {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  color: var(--color-gold);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  animation: fadeInUp 1s ease 0.9s both;
+
+  &:hover { opacity: 0.65; }
+
+  .tap-text {
+    animation: tapBlink 2s ease-in-out 2s infinite;
+    letter-spacing: 0.08em;
+  }
+}
+
+.tap-line {
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--color-gold);
+}

@@ -1,0 +1,37 @@
+<header class="site-header" [class.scrolled]="isScrolled()">
+
+  <!-- Logo -->
+  <a href="#home" class="header-logo" (click)="closeMenu()">
+    <span class="logo-name">A</span>
+    <span class="logo-amp">&amp;</span>
+    <span class="logo-name">S</span>
+  </a>
+
+  <!-- Desktop Nav -->
+  <nav class="header-nav desktop-nav" role="navigation" aria-label="Main navigation">
+    @for (link of navLinks; track link.href) {
+      <a [href]="link.href" class="nav-link">{{ link.label }}</a>
+    }
+    <a href="#rsvp" class="nav-rsvp-btn">RSVP</a>
+  </nav>
+
+  <!-- Mobile burger -->
+  <button class="burger-btn" (click)="toggleMenu()" [class.open]="menuOpen()" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Mobile drawer -->
+  @if (menuOpen()) {
+    <div class="mobile-drawer" (click)="closeMenu()">
+      <nav class="mobile-nav">
+        @for (link of navLinks; track link.href) {
+          <a [href]="link.href" class="mobile-nav-link" (click)="closeMenu()">{{ link.label }}</a>
+        }
+        <a href="#rsvp" class="mobile-rsvp-btn" (click)="closeMenu()">RSVP</a>
+      </nav>
+    </div>
+  }
+
+</header>
