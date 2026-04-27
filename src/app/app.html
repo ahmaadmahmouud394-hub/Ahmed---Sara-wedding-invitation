@@ -5,8 +5,9 @@
 <main id="home">
   <app-hero></app-hero>
   <app-countdown></app-countdown>
-  <section id="story"><app-gallery></app-gallery></section>
-  <section id="details"><app-event-details></app-event-details></section>
+  <div id="story" style="position: relative; top: -80px; height: 0; overflow: hidden;"></div>
+  <section id="gallery" style="scroll-margin-top: 80px;"><app-gallery></app-gallery></section>
+  <section id="details" style="scroll-margin-top: 80px;"><app-event-details></app-event-details></section>
   <app-rsvp-form></app-rsvp-form>
   <app-contact></app-contact>
   <app-footer></app-footer>

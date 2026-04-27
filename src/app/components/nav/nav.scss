@@ -17,12 +17,21 @@
   padding: 1rem 2rem;
 }
 
+.site-header.menu-open {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
 // Logo
 .header-logo {
   display: flex;
   align-items: center;
   gap: 0.3rem;
   text-decoration: none;
+  position: relative;
+  z-index: 1001;
 }
 
 .logo-name {
@@ -100,6 +109,8 @@
   border: none;
   cursor: pointer;
   padding: 4px;
+  position: relative;
+  z-index: 1001;
 
   @media (min-width: 768px) { display: none; }
 
@@ -123,13 +134,13 @@
 .mobile-drawer {
   position: fixed;
   inset: 0;
-  background: rgba(253, 251, 247, 0.97);
-  backdrop-filter: blur(16px);
+  background: var(--color-cream);
   z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: fadeIn 0.25s ease;
+  transform: translateZ(0); /* Force compositor layer to fix iOS bleed-through */
 }
 
 @keyframes fadeIn {

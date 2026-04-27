@@ -1,4 +1,4 @@
-<header class="site-header" [class.scrolled]="isScrolled()">
+<header class="site-header" [class.scrolled]="isScrolled()" [class.menu-open]="menuOpen()">
 
   <!-- Logo -->
   <a href="#home" class="header-logo" (click)="closeMenu()">
@@ -22,16 +22,16 @@
     <span></span>
   </button>
 
-  <!-- Mobile drawer -->
-  @if (menuOpen()) {
-    <div class="mobile-drawer" (click)="closeMenu()">
-      <nav class="mobile-nav">
-        @for (link of navLinks; track link.href) {
-          <a [href]="link.href" class="mobile-nav-link" (click)="closeMenu()">{{ link.label }}</a>
-        }
-        <a href="#rsvp" class="mobile-rsvp-btn" (click)="closeMenu()">RSVP</a>
-      </nav>
-    </div>
-  }
-
 </header>
+
+<!-- Mobile drawer -->
+@if (menuOpen()) {
+  <div class="mobile-drawer" (click)="closeMenu()">
+    <nav class="mobile-nav">
+      @for (link of navLinks; track link.href) {
+        <a [href]="link.href" class="mobile-nav-link" (click)="closeMenu()">{{ link.label }}</a>
+      }
+      <a href="#rsvp" class="mobile-rsvp-btn" (click)="closeMenu()">RSVP</a>
+    </nav>
+  </div>
+}

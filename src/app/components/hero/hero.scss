@@ -1,36 +1,52 @@
 // ---- Keyframes ----
 @keyframes orbFloat {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(30px, -40px) scale(1.05); }
-  66%       { transform: translate(-20px, 20px) scale(0.97); }
+  33%       { transform: translate(30px, -40px) scale(1.06); }
+  66%       { transform: translate(-20px, 20px) scale(0.96); }
 }
 
 @keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: none; }
+  from { opacity: 0; transform: translateY(40px); filter: blur(4px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
 }
 
-
 @keyframes petalFloat {
-  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 0.6; }
-  100% { transform: translateY(-120vh) rotate(720deg); opacity: 0; }
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  8%   { opacity: 0.9; }
+  50%  { transform: translateY(-60vh) translateX(18px) rotate(380deg); opacity: 0.7; }
+  92%  { opacity: 0.3; }
+  100% { transform: translateY(-115vh) translateX(-10px) rotate(760deg); opacity: 0; }
 }
 
 @keyframes shimmerText {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0%   { background-position: -300% center; }
+  100% { background-position: 300% center; }
 }
 
 @keyframes lineDraw {
-  from { width: 0; }
-  to   { width: 100%; }
+  from { width: 0; opacity: 0; }
+  20%  { opacity: 1; }
+  to   { width: 100%; opacity: 1; }
 }
 
 @keyframes pulseRing {
   0%   { transform: scale(1); opacity: 0.6; }
   100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(8px); opacity: 0.5; }
+}
+
+@keyframes scrollFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scaleY(1); opacity: 0.8; }
+  50%       { transform: scaleY(2.2); opacity: 0.3; }
 }
 
 // ---- Hero Section ----
@@ -74,7 +90,8 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  animation: orbFloat ease-in-out infinite;
+  /* duration placeholder — overridden per orb below */
+  animation: orbFloat 14s ease-in-out infinite;
   transition: transform 0.4s ease;
   will-change: transform;
 }
@@ -96,6 +113,7 @@
   background: radial-gradient(circle, rgba(154,110,42,0.12), transparent 70%);
   animation-duration: 18s;
   animation-delay: -6s;
+  animation-timing-function: ease-in-out;
 }
 
 // ---- Floating petals ----
@@ -113,15 +131,17 @@
   height: 16px;
   background: linear-gradient(to bottom, #E8C060, rgba(200,151,58,0.4));
   border-radius: 50% 50% 30% 30%;
-  animation: petalFloat linear infinite;
+  /* duration placeholder — overridden per petal below */
+  animation: petalFloat 12s linear infinite;
 }
 
-.petal-a { left: 8%;  animation-duration: 12s; animation-delay: 0s;   width: 8px;  height: 14px; }
-.petal-b { left: 22%; animation-duration: 15s; animation-delay: -4s;  width: 12px; height: 18px; }
-.petal-c { left: 45%; animation-duration: 10s; animation-delay: -8s;  width: 7px;  height: 12px; opacity: 0.7; }
-.petal-d { left: 65%; animation-duration: 14s; animation-delay: -2s;  width: 10px; height: 16px; }
-.petal-e { left: 78%; animation-duration: 18s; animation-delay: -6s;  width: 9px;  height: 15px; opacity: 0.6; }
-.petal-f { left: 90%; animation-duration: 11s; animation-delay: -10s; width: 11px; height: 17px; }
+/* Each petal gets its own full animation shorthand to avoid sub-property override issues */
+.petal-a { left: 8%;  animation: petalFloat 12s linear 0s   infinite; width: 8px;  height: 14px; }
+.petal-b { left: 22%; animation: petalFloat 15s linear -4s  infinite; width: 12px; height: 18px; }
+.petal-c { left: 45%; animation: petalFloat 10s linear -8s  infinite; width: 7px;  height: 12px; opacity: 0.7; }
+.petal-d { left: 65%; animation: petalFloat 14s linear -2s  infinite; width: 10px; height: 16px; }
+.petal-e { left: 78%; animation: petalFloat 18s linear -6s  infinite; width: 9px;  height: 15px; opacity: 0.6; }
+.petal-f { left: 90%; animation: petalFloat 11s linear -10s infinite; width: 11px; height: 17px; }
 
 // ---- Corner flourishes ----
 .flourish {
@@ -156,13 +176,13 @@
   text-transform: uppercase;
   color: var(--color-gold);
   margin-bottom: 2.5rem;
-  animation: fadeSlideUp 0.9s ease 0.2s both;
+  /* Animated by reveal directive — no separate keyframe needed */
 }
 
 // ---- Names ----
 .hero-names {
   margin-bottom: 2.5rem;
-  animation: fadeSlideUp 0.9s ease 0.4s both;
+  /* Animated by reveal directive — no separate keyframe needed */
 }
 
 .hero-name {
@@ -180,16 +200,18 @@
   background: linear-gradient(
     90deg,
     var(--color-text) 0%,
-    var(--color-text) 35%,
+    var(--color-text) 25%,
+    #F5D98B 42%,
     #E8C060 50%,
-    var(--color-text) 65%,
+    #F5D98B 58%,
+    var(--color-text) 75%,
     var(--color-text) 100%
   );
-  background-size: 200% auto;
+  background-size: 300% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmerText 4s linear infinite;
+  animation: shimmerText 5s linear infinite;
 }
 
 .hero-ampersand-wrap {
@@ -296,4 +318,47 @@
   .cta-icon { width: 16px; height: 16px; }
 }
 
+// ---- Scroll-down Hint ----
+.scroll-down-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: scrollFadeIn 1.2s ease 1.6s both;
+  cursor: default;
+  user-select: none;
+  margin-top: 0.5rem;
+}
+
+.scroll-label {
+  font-family: var(--font-caps);
+  font-size: 0.55rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  opacity: 0.75;
+}
+
+.scroll-arrow-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.scroll-arrow-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  animation: dotPulse 1.6s ease-in-out infinite;
+}
+
+.scroll-chevron {
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--color-gold);
+  animation: scrollBounce 1.6s ease-in-out infinite;
+  display: block;
+}
 

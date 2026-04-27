@@ -52,8 +52,8 @@
         </div>
 
         <div class="form-footer">
-          <button type="submit" class="submit-btn">
-            <span class="btn-text">Send RSVP</span>
+          <button type="submit" class="submit-btn" [disabled]="isSubmitting">
+            <span class="btn-text">{{ isSubmitting ? 'Sending…' : 'Send RSVP' }}</span>
             <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
           </button>
           <p class="form-note">Your response helps us plan a perfect celebration</p>
