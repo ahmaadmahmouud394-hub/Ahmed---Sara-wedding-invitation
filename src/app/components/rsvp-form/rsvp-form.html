@@ -24,7 +24,8 @@
 
         <div class="form-group">
           <label for="rsvp-name" class="form-label">Full Name(s)</label>
-          <input type="text" id="rsvp-name" name="name" class="form-input" placeholder="e.g. John &amp; Jane Doe" required>
+          <input type="text" id="rsvp-name" name="name" class="form-input" placeholder="e.g. John &amp; Jane Doe"
+            required>
         </div>
 
         <div class="form-row">
@@ -36,7 +37,9 @@
                 <option value="yes">Joyfully Accept</option>
                 <option value="no">Regretfully Decline</option>
               </select>
-              <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+              <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              </svg>
             </div>
           </div>
 
@@ -47,16 +50,19 @@
         </div>
 
         <div class="form-group">
-          <label for="rsvp-dietary" class="form-label">Dietary Requirements / Notes</label>
-          <textarea id="rsvp-dietary" name="dietary" rows="3" class="form-textarea" placeholder="Any allergies or special requests?"></textarea>
+          <label for="rsvp-dietary" class="form-label">Leave us your Congratulations</label>
+          <textarea id="rsvp-dietary" name="dietary" rows="3" class="form-textarea"
+            placeholder="Share your warm wishes"></textarea>
         </div>
 
         <div class="form-footer">
           <button type="submit" class="submit-btn" [disabled]="isSubmitting">
             <span class="btn-text">{{ isSubmitting ? 'Sending…' : 'Send RSVP' }}</span>
-            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            </svg>
           </button>
-          <p class="form-note">Your response helps us plan a perfect celebration</p>
+          <p class="form-note">Thank you for being part of our special moment</p>
         </div>
 
       </form>
