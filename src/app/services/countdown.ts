@@ -12,7 +12,7 @@ export interface TimeLeft {
 })
 export class CountdownService implements OnDestroy {
   // Placeholder date
-  private targetDate = new Date('2026-07-24T15:00:00+03:00').getTime();
+  private targetDate = new Date('2026-07-24T21:20:00+03:00').getTime();
   private intervalId: any;
 
   readonly timeLeft = signal<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
