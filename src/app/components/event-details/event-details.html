@@ -3,10 +3,10 @@
 
   <div class="event-inner">
     <div class="section-header" reveal>
-      <span class="section-eyebrow">Celebration Details</span>
-      <h2 class="section-title">When &amp; Where</h2>
+      <span class="section-eyebrow">{{ lang.t().eventEyebrow }}</span>
+      <h2 class="section-title">{{ lang.t().eventTitle }}</h2>
       <div class="section-divider"></div>
-      <p class="section-subtitle">We look forward to celebrating with you</p>
+      <p class="section-subtitle">{{ lang.t().eventSubtitle }}</p>
     </div>
 
     <div class="event-cards single-card">
@@ -18,19 +18,19 @@
             <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
           </svg>
         </div>
-        <h3 class="card-title">Katb-Ketab</h3>
+        <h3 class="card-title">{{ lang.t().eventCardTitle }}</h3>
         <div class="card-divider"></div>
-        <p class="card-time">Friday, 24 July 2026</p>
-        <p class="card-time-detail">9:20 PM</p>
+        <p class="card-time">{{ lang.t().eventDate }}</p>
+        <p class="card-time-detail">{{ lang.t().eventTime }}</p>
         <div class="card-address">
-          <p class="address-name">Click Below for Location</p>
-          <p class="address-detail">We look forward to seeing you there</p>
+          <p class="address-name">{{ lang.t().eventAddressName }}</p>
+          <p class="address-detail">{{ lang.t().eventAddressDetail }}</p>
         </div>
         <a href="https://maps.app.goo.gl/VFdUmKjkfww7PLL6A" target="_blank" class="card-map-btn">
           <svg xmlns="http://www.w3.org/2000/svg" class="pin-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-          View on Map
+          {{ lang.t().eventMapBtn }}
         </a>
       </div>
 

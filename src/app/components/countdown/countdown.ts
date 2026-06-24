@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, ElementRef } from '@angular/core';
 import { CountdownService } from '../../services/countdown';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { LangService } from '../../services/lang.service';
 
 @Component({
   selector: 'app-countdown',
@@ -11,11 +12,11 @@ import { RevealDirective } from '../../shared/reveal.directive';
 })
 export class Countdown implements OnInit {
   countdownService = inject(CountdownService);
+  lang = inject(LangService);
 
   constructor(private el: ElementRef) {}
 
   ngOnInit() {
-    // Stagger each cell ring animation delay
     const rings = (this.el.nativeElement as HTMLElement).querySelectorAll('.cell-ring');
     rings.forEach((ring: any, i: number) => {
       (ring as HTMLElement).style.animationDelay = `${i * 0.2}s`;

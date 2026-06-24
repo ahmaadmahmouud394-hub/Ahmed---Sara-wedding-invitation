@@ -10,8 +10,8 @@
 
     <div class="welcome-content">
 
-      <p class="welcome-eyebrow">YOU HAVE RECEIVED A</p>
-      <h1 class="welcome-heading">Wedding Invitation</h1>
+      <p class="welcome-eyebrow">{{ lang.t().welcomeEyebrow }}</p>
+      <h1 class="welcome-heading">{{ lang.t().welcomeHeading }}</h1>
 
       <div class="seal-wrapper" (click)="openInvitation()">
         <div class="seal-glow"></div>
@@ -49,7 +49,7 @@
 
       <div class="tap-prompt" (click)="openInvitation()">
         <span class="tap-line"></span>
-        <span class="tap-text">tap to open</span>
+        <span class="tap-text">{{ lang.t().welcomeTap }}</span>
         <span class="tap-line"></span>
       </div>
 

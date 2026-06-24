@@ -1,8 +1,8 @@
 <section class="countdown-section">
   <div class="countdown-inner">
     <div class="section-header" reveal>
-      <span class="section-eyebrow">The Big Day</span>
-      <h2 class="section-title">Counting Down Together</h2>
+      <span class="section-eyebrow">{{ lang.t().countdownEyebrow }}</span>
+      <h2 class="section-title">{{ lang.t().countdownTitle }}</h2>
       <div class="section-divider"></div>
     </div>
 
@@ -19,7 +19,7 @@
             <span class="cell-number">{{ countdownService.timeLeft().days }}</span>
           </div>
         </div>
-        <span class="cell-label">Days</span>
+        <span class="cell-label">{{ lang.t().countdownDays }}</span>
       </div>
 
       <div class="countdown-dot">·</div>
@@ -32,7 +32,7 @@
             <span class="cell-number">{{ countdownService.timeLeft().hours }}</span>
           </div>
         </div>
-        <span class="cell-label">Hours</span>
+        <span class="cell-label">{{ lang.t().countdownHours }}</span>
       </div>
 
       <div class="countdown-dot">·</div>
@@ -45,7 +45,7 @@
             <span class="cell-number">{{ countdownService.timeLeft().minutes }}</span>
           </div>
         </div>
-        <span class="cell-label">Minutes</span>
+        <span class="cell-label">{{ lang.t().countdownMinutes }}</span>
       </div>
 
       <div class="countdown-dot">·</div>
@@ -58,12 +58,12 @@
             <span class="cell-number">{{ countdownService.timeLeft().seconds }}</span>
           </div>
         </div>
-        <span class="cell-label">Seconds</span>
+        <span class="cell-label">{{ lang.t().countdownSeconds }}</span>
       </div>
 
     </div>
 
-    <p class="countdown-tagline" reveal="450ms">Counting the days to our forever</p>
-    <p class="countdown-date" reveal="550ms">Friday, 24th July 2026</p>
+    <p class="countdown-tagline" reveal="450ms">{{ lang.t().countdownTagline }}</p>
+    <p class="countdown-date" reveal="550ms">{{ lang.t().countdownDate }}</p>
   </div>
 </section>

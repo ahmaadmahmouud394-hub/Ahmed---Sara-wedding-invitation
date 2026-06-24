@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;500&family=Cairo:wght@300;400;500;600;700&display=swap');
 
 // =====================
 // CSS Variables
@@ -158,4 +158,69 @@ img {
   30% { transform: scale(1.1) rotate(1deg); }
   40% { transform: scale(1) rotate(0deg); }
   100% { transform: scale(1); }
+}
+
+// =====================
+// Arabic / RTL Support
+// =====================
+:root {
+  --font-arabic: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+[dir='rtl'] {
+  body, p, span, a, label, input, textarea, select, button {
+    font-family: var(--font-arabic);
+    letter-spacing: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-arabic);
+    letter-spacing: 0;
+  }
+
+  .section-eyebrow {
+    letter-spacing: 0.05em;
+  }
+
+  // Flip horizontal reveal animations for RTL
+  .reveal-hidden-left  { transform: translateX(40px); }
+  .reveal-hidden-right { transform: translateX(-40px); }
+}
+
+// =====================
+// Language Toggle Button
+// =====================
+.lang-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  font-family: var(--font-caps);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--color-gold);
+    color: var(--color-green-deep);
+  }
+
+  .lang-icon { font-size: 0.85rem; }
+}
+
+.mobile-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lang-mobile {
+  font-size: 0.65rem;
+  padding: 0.25rem 0.55rem;
 }

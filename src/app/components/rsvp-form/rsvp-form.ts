@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { ParallaxDirective } from '../../shared/parallax.directive';
 import { ToastService } from '../../services/toast.service';
+import { LangService } from '../../services/lang.service';
 
 // ── EmailJS credentials ─────────────────────────────
 const EMAILJS_PUBLIC_KEY = 'hDlQMaSVR9S660Xwz';
@@ -21,6 +22,7 @@ const EMAILJS_TEMPLATE_ID = 'template_19iwvx6';
 export class RsvpForm {
   private toastService = inject(ToastService);
   private zone = inject(NgZone);
+  lang = inject(LangService);
 
   isSubmitting = false;
 
@@ -51,12 +53,12 @@ export class RsvpForm {
         { publicKey: EMAILJS_PUBLIC_KEY }
       );
 
-      // emailjs resolves outside Angular's zone — zone.run() triggers change detection
       this.zone.run(() => {
+        const t = this.lang.t();
         if (attendance === 'no') {
-          this.toastService.show('We are so sorry you cannot make it. You will be missed! 😔', 'sad');
+          this.toastService.show(t.toastSad, 'sad');
         } else {
-          this.toastService.show("Thank you for your RSVP! We can't wait to celebrate with you! ✨", 'success');
+          this.toastService.show(t.toastSuccess, 'success');
         }
         form.reset();
         this.isSubmitting = false;
@@ -65,7 +67,7 @@ export class RsvpForm {
     } catch (error) {
       console.error('EmailJS error:', error);
       this.zone.run(() => {
-        this.toastService.show('There was an issue sending your RSVP. Please try again.', 'error');
+        this.toastService.show(this.lang.t().toastError, 'error');
         this.isSubmitting = false;
       });
     }

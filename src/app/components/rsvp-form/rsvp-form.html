@@ -6,10 +6,10 @@
   <div class="rsvp-inner">
 
     <div class="section-header" reveal>
-      <span class="section-eyebrow">Join the Celebration</span>
-      <h2 class="section-title">RSVP</h2>
+      <span class="section-eyebrow">{{ lang.t().rsvpEyebrow }}</span>
+      <h2 class="section-title">{{ lang.t().rsvpTitle }}</h2>
       <div class="section-divider"></div>
-      <p class="section-subtitle">Kindly respond by 24th June, 2026</p>
+      <p class="section-subtitle">{{ lang.t().rsvpSubtitle }}</p>
     </div>
 
     <div class="rsvp-card" reveal="200ms" revealType="scale">
@@ -23,19 +23,19 @@
       <form class="rsvp-form" (submit)="onSubmit($event)">
 
         <div class="form-group">
-          <label for="rsvp-name" class="form-label">Full Name(s)</label>
-          <input type="text" id="rsvp-name" name="name" class="form-input" placeholder="e.g. John &amp; Jane Doe"
-            required>
+          <label for="rsvp-name" class="form-label">{{ lang.t().rsvpNameLabel }}</label>
+          <input type="text" id="rsvp-name" name="name" class="form-input"
+            [placeholder]="lang.t().rsvpNamePlaceholder" required>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label for="rsvp-attendance" class="form-label">Attending?</label>
+            <label for="rsvp-attendance" class="form-label">{{ lang.t().rsvpAttendingLabel }}</label>
             <div class="select-wrap">
               <select id="rsvp-attendance" name="attendance" class="form-select" required>
-                <option value="" disabled selected>Please choose…</option>
-                <option value="yes">Joyfully Accept</option>
-                <option value="no">Regretfully Decline</option>
+                <option value="" disabled selected>{{ lang.t().rsvpAttendingPlaceholder }}</option>
+                <option value="yes">{{ lang.t().rsvpAccept }}</option>
+                <option value="no">{{ lang.t().rsvpDecline }}</option>
               </select>
               <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
@@ -44,25 +44,25 @@
           </div>
 
           <div class="form-group">
-            <label for="rsvp-guests" class="form-label">Number of Guests</label>
+            <label for="rsvp-guests" class="form-label">{{ lang.t().rsvpGuestsLabel }}</label>
             <input type="number" id="rsvp-guests" name="guests" min="1" max="6" class="form-input" placeholder="1">
           </div>
         </div>
 
         <div class="form-group">
-          <label for="rsvp-dietary" class="form-label">Leave us your Congratulations</label>
+          <label for="rsvp-dietary" class="form-label">{{ lang.t().rsvpWishesLabel }}</label>
           <textarea id="rsvp-dietary" name="dietary" rows="3" class="form-textarea"
-            placeholder="Share your warm wishes"></textarea>
+            [placeholder]="lang.t().rsvpWishesPlaceholder"></textarea>
         </div>
 
         <div class="form-footer">
           <button type="submit" class="submit-btn" [disabled]="isSubmitting">
-            <span class="btn-text">{{ isSubmitting ? 'Sending…' : 'Send RSVP' }}</span>
+            <span class="btn-text">{{ isSubmitting ? lang.t().rsvpSending : lang.t().rsvpSend }}</span>
             <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
             </svg>
           </button>
-          <p class="form-note">Thank you for being part of our special moment</p>
+          <p class="form-note">{{ lang.t().rsvpNote }}</p>
         </div>
 
       </form>

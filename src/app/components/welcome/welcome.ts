@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LangService } from '../../services/lang.service';
 
 @Component({
   selector: 'app-welcome',
@@ -9,9 +10,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './welcome.scss'
 })
 export class WelcomeComponent implements OnInit {
+  lang = inject(LangService);
   isOpened = false;
   isHidden = false;
-
   particles: string[] = [];
 
   ngOnInit() {

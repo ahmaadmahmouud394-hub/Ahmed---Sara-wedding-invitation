@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { ParallaxDirective } from '../../shared/parallax.directive';
+import { LangService } from '../../services/lang.service';
 
 @Component({
   selector: 'app-event-details',
@@ -9,4 +10,6 @@ import { ParallaxDirective } from '../../shared/parallax.directive';
   templateUrl: './event-details.html',
   styleUrl: './event-details.scss',
 })
-export class EventDetails {}
+export class EventDetails {
+  lang = inject(LangService);
+}

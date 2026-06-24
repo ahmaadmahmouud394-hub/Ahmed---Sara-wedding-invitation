@@ -2,10 +2,10 @@
   <div class="gallery-inner">
 
     <div class="section-header" reveal>
-      <span class="section-eyebrow">Our Journey</span>
-      <h2 class="section-title">Our Story</h2>
+      <span class="section-eyebrow">{{ lang.t().galleryEyebrow }}</span>
+      <h2 class="section-title">{{ lang.t().galleryTitle }}</h2>
       <div class="section-divider"></div>
-      <p class="section-subtitle">From a simple "I love you" to forever</p>
+      <p class="section-subtitle">{{ lang.t().gallerySubtitle }}</p>
     </div>
 
     <div class="gallery-grid">
@@ -13,8 +13,8 @@
       <div class="gallery-cell cell-tall" reveal="100ms" revealType="scale">
         <img src="couple_photo_1.jpg" alt="First I Love You" class="gallery-img">
         <div class="gallery-caption-bar">
-          <span class="caption-eyebrow">24 July 2024</span>
-          <span class="caption-text">First "Tetgawzeeny!"</span>
+          <span class="caption-eyebrow">{{ lang.t().galleryCaption1Date }}</span>
+          <span class="caption-text">{{ lang.t().galleryCaption1Text }}</span>
         </div>
       </div>
 
@@ -22,15 +22,15 @@
         <div class="gallery-cell cell-short" reveal="200ms" revealType="scale">
           <img src="couple_photo_2.jpg" alt="Our Engagement" class="gallery-img">
           <div class="gallery-caption-bar">
-            <span class="caption-eyebrow">11 November 2024</span>
-            <span class="caption-text">Our Engagement</span>
+            <span class="caption-eyebrow">{{ lang.t().galleryCaption2Date }}</span>
+            <span class="caption-text">{{ lang.t().galleryCaption2Text }}</span>
           </div>
         </div>
 
         <div class="gallery-quote-card" reveal="300ms" revealType="scale">
           <div class="quote-mark">"</div>
-          <p class="quote-text">Two souls with but a single thought, two hearts that beat as one.</p>
-          <span class="quote-attribution">— John Keats</span>
+          <p class="quote-text">{{ lang.t().galleryQuote }}</p>
+          <span class="quote-attribution">{{ lang.t().galleryQuoteAuthor }}</span>
         </div>
       </div>
 

@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, HostListener, inject } from '@angular/core';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { ParallaxDirective } from '../../shared/parallax.directive';
+import { LangService } from '../../services/lang.service';
 
 @Component({
   selector: 'app-hero',
@@ -10,6 +11,8 @@ import { ParallaxDirective } from '../../shared/parallax.directive';
   styleUrl: './hero.scss',
 })
 export class Hero implements OnInit, OnDestroy {
+  lang = inject(LangService);
+
   private frame = 0;
   private mouseX = 0;
   private mouseY = 0;

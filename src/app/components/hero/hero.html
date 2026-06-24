@@ -26,7 +26,7 @@
 
   <div class="hero-content">
 
-    <p class="hero-eyebrow" reveal>Together with their families</p>
+    <p class="hero-eyebrow" reveal>{{ lang.t().heroEyebrow }}</p>
 
     <div class="hero-names" reveal="200ms">
       <h1 class="hero-name name-shimmer">Ahmed</h1>
@@ -38,23 +38,23 @@
       <h1 class="hero-name name-shimmer">Sara</h1>
     </div>
 
-    <p class="hero-request" reveal="350ms">Request the honour of your presence<br>at their wedding celebration</p>
+    <p class="hero-request" reveal="350ms">{{ lang.t().heroRequest }}</p>
 
     <div class="hero-meta" reveal="450ms">
       <div class="hero-meta-item">
-        <span class="meta-label">Date</span>
-        <span class="meta-value">Friday, July 24th, 2026</span>
+        <span class="meta-label">{{ lang.t().heroDateLabel }}</span>
+        <span class="meta-value">{{ lang.t().heroDateValue }}</span>
       </div>
       <div class="hero-meta-divider"></div>
       <div class="hero-meta-item">
-        <span class="meta-label">Time</span>
-        <span class="meta-value">9:20 PM Onwards</span>
+        <span class="meta-label">{{ lang.t().heroTimeLabel }}</span>
+        <span class="meta-value">{{ lang.t().heroTimeValue }}</span>
       </div>
     </div>
 
     <!-- Scroll down indicator -->
     <div class="scroll-down-hint" aria-label="Scroll down">
-      <span class="scroll-label">Scroll</span>
+      <span class="scroll-label">{{ lang.t().heroScroll }}</span>
       <div class="scroll-arrow-wrap">
         <span class="scroll-arrow-dot"></span>
         <span class="scroll-chevron">&#8964;</span>

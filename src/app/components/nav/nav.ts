@@ -1,5 +1,6 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LangService } from '../../services/lang.service';
 
 @Component({
   selector: 'app-nav',
@@ -9,16 +10,20 @@ import { CommonModule } from '@angular/common';
   styleUrl: './nav.scss'
 })
 export class NavComponent {
+  lang = inject(LangService);
   isScrolled = signal(false);
   menuOpen = signal(false);
 
-  navLinks = [
-    { label: 'Home',      href: '#home' },
-    { label: 'Our Story', href: '#story' },
-    { label: 'Details',   href: '#details' },
-    { label: 'Gallery',   href: '#gallery' },
-    { label: 'Contact',   href: '#contact' },
-  ];
+  get navLinks() {
+    const t = this.lang.t();
+    return [
+      { label: t.navHome,    href: '#home' },
+      { label: t.navStory,   href: '#story' },
+      { label: t.navDetails, href: '#details' },
+      { label: t.navGallery, href: '#gallery' },
+      { label: t.navContact, href: '#contact' },
+    ];
+  }
 
   @HostListener('window:scroll')
   onScroll() {

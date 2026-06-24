@@ -177,3 +177,20 @@
   text-transform: uppercase;
   margin-top: 1rem;
 }
+
+// Mobile right group (lang toggle + burger)
+.mobile-right {
+  @media (min-width: 768px) { display: none; }
+}
+
+// RTL: arabic mobile nav links use Cairo
+[dir='rtl'] {
+  .mobile-nav-link, .mobile-rsvp-btn {
+    font-family: var(--font-arabic);
+    letter-spacing: 0;
+    font-style: normal;
+  }
+  .nav-link {
+    letter-spacing: 0.05em;
+  }
+}

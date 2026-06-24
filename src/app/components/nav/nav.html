@@ -12,15 +12,26 @@
     @for (link of navLinks; track link.href) {
       <a [href]="link.href" class="nav-link">{{ link.label }}</a>
     }
-    <a href="#rsvp" class="nav-rsvp-btn">RSVP</a>
+    <a href="#rsvp" class="nav-rsvp-btn">{{ lang.t().navRsvp }}</a>
+
+    <!-- Language Toggle -->
+    <button class="lang-toggle-btn" (click)="lang.toggle()" [attr.aria-label]="lang.lang() === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'">
+      <span class="lang-icon">🌐</span>
+      <span class="lang-label">{{ lang.lang() === 'ar' ? 'EN' : 'عربي' }}</span>
+    </button>
   </nav>
 
   <!-- Mobile burger -->
-  <button class="burger-btn" (click)="toggleMenu()" [class.open]="menuOpen()" aria-label="Toggle menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <div class="mobile-right">
+    <button class="lang-toggle-btn lang-mobile" (click)="lang.toggle()">
+      {{ lang.lang() === 'ar' ? 'EN' : 'عربي' }}
+    </button>
+    <button class="burger-btn" (click)="toggleMenu()" [class.open]="menuOpen()" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
 
 </header>
 
@@ -31,7 +42,7 @@
       @for (link of navLinks; track link.href) {
         <a [href]="link.href" class="mobile-nav-link" (click)="closeMenu()">{{ link.label }}</a>
       }
-      <a href="#rsvp" class="mobile-rsvp-btn" (click)="closeMenu()">RSVP</a>
+      <a href="#rsvp" class="mobile-rsvp-btn" (click)="closeMenu()">{{ lang.t().navRsvp }}</a>
     </nav>
   </div>
 }
