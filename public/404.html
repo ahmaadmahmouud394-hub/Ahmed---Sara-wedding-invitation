@@ -4,9 +4,8 @@
   <meta charset="utf-8">
   <title>Ahmed &amp; Sara | Wedding Invitation · 24.07.2026</title>
   <script>
-    // GitHub Pages SPA redirect trick
-    // Stores the path in sessionStorage then redirects to the root index.html
-    var segmentCount = 1; // number of path segments in the repo name
+    // GitHub Pages SPA redirect — custom domain served from root
+    var segmentCount = 0;
     var l = window.location;
     l.replace(
       l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
@@ -20,3 +19,4 @@
 <body>
 </body>
 </html>
+
