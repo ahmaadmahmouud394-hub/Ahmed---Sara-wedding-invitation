@@ -254,8 +254,8 @@ const AR: Translations = {
 
 @Injectable({ providedIn: 'root' })
 export class LangService {
-  readonly lang = signal<Lang>('ar');
-  readonly t = signal<Translations>(AR);
+  readonly lang = signal<Lang>('en');
+  readonly t = signal<Translations>(EN);
 
   constructor() {
     // Apply RTL/LTR on language change
